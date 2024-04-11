@@ -219,6 +219,7 @@ class HttpClient:
 
                 raise
 
+            self.log.debug(f"response of {url}:\n{response_data}")
             if response_data["data"] is None:
                 yield from []
             else:

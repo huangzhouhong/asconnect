@@ -12,3 +12,5 @@ from asconnect.models.idfa import *
 from asconnect.models.localization import *
 from asconnect.models.screenshots import *
 from asconnect.models.users import *
+from asconnect.models.user_invite import *
+from asconnect.models.testflight import *

@@ -15,6 +15,8 @@ from asconnect.build_client import BuildClient
 from asconnect.screenshot_client import ScreenshotClient
 from asconnect.users_client import UsersClient
 from asconnect.version_client import VersionClient
+from asconnect.user_invitation_client import UsersInvitationClient
+from asconnect.testflight_client import TestflightClient
 
 # pylint: disable=too-many-public-methods
 
@@ -65,3 +67,5 @@ class Client:
         self.screenshots = ScreenshotClient(http_client=self.http_client, log=self.log)
         self.users = UsersClient(http_client=self.http_client, log=self.log)
         self.version = VersionClient(http_client=self.http_client, log=self.log)
+        self.user_invite=UsersInvitationClient(http_client=self.http_client, log=self.log)
+        self.testflight=TestflightClient(http_client=self.http_client, log=self.log)

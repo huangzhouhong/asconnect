@@ -19,10 +19,10 @@ class UsersClient:
     http_client: HttpClient
 
     def __init__(
-        self,
-        *,
-        http_client: HttpClient,
-        log: logging.Logger,
+            self,
+            *,
+            http_client: HttpClient,
+            log: logging.Logger,
     ) -> None:
         """Construct a new client object.
 
@@ -44,6 +44,17 @@ class UsersClient:
         url = self.http_client.generate_url("users")
 
         query_parameters = {"limit": "200"}
+
+        url = update_query_parameters(url, query_parameters)
+
+        yield from self.http_client.get(url=url, data_type=List[User])
+
+    def get_users_by_email(self, email) -> Iterator[User]:
+        self.log.info("Getting users...")
+
+        url = self.http_client.generate_url("users")
+
+        query_parameters = {"limit": "200", "filter[username]": email}
 
         url = update_query_parameters(url, query_parameters)
 
